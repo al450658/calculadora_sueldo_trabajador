@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>De tu sueldo bruto a tu sueldo neto · Calculadora España 2026</title>
+<style>
+:root{--bg:#f6f8f7;--card:#fff;--tx:#14211c;--mu:#55645d;--ln:#d9e1dd;--neto:#2f8f63;--ss:#2f6db5;--irpf:#c4501b;--acc:#14211c;--accx:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1714;--card:#17221d;--tx:#e8efec;--mu:#9bada5;--ln:#2b3a33;--neto:#4bc08a;--ss:#6aa3e8;--irpf:#ee8a58;--acc:#e8efec;--accx:#0f1714}}
+*{box-sizing:border-box}html{color-scheme:light dark}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.w{max-width:980px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:clamp(1.5rem,4vw,2.1rem);line-height:1.15;margin:8px 0 6px;letter-spacing:-.02em}
+h2{font-size:1.2rem;margin:0 0 10px}h3{font-size:1rem;margin:16px 0 6px}
+p{margin:0 0 10px;max-width:72ch}.mu{color:var(--mu)}.sm{font-size:.86rem}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between}
+select,input{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--ln);border-radius:8px;padding:8px 10px}
+nav{display:flex;gap:6px;margin:18px 0;border-bottom:1px solid var(--ln);overflow-x:auto}
+nav button{font:inherit;font-weight:600;background:none;border:0;border-bottom:3px solid transparent;color:var(--mu);padding:10px 14px;cursor:pointer;white-space:nowrap}
+nav button[aria-selected=true]{color:var(--tx);border-color:var(--tx)}
+button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--ss);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:18px;margin-bottom:16px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.k{border:1px solid var(--ln);border-radius:10px;padding:12px}.k b{display:block;font-size:1.45rem;font-variant-numeric:tabular-nums}
+.k.n b{color:var(--neto)}.k.s b{color:var(--ss)}.k.i b{color:var(--irpf)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:7px 8px;border-bottom:1px solid var(--ln)}th:first-child,td:first-child{text-align:left}
+.sc{overflow-x:auto}
+.src li{margin-bottom:6px}a{color:var(--ss)}
+.bar{display:flex;height:30px;border-radius:6px;overflow:hidden;background:var(--ln)}
+.bar i{display:block;height:100%}.bn{background:var(--neto)}.bs{background:var(--ss)}.bi{background:var(--irpf)}
+.lg{display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem;margin:8px 0}
+.lg span:before{content:"";display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;background:var(--c)}
+.ex{margin-bottom:18px}.ex .h{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:5px}
+.tm{border:1px solid var(--ln);border-radius:10px;padding:12px;margin:10px 0}
+.tm .tt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:.92rem;margin-bottom:8px}
+.tm .w2{min-width:70px}.tm .bar{height:26px}
+.tm .tx{font-size:.88rem;margin-top:8px;font-variant-numeric:tabular-nums}
+.tm .tx b{color:var(--irpf)}.tm .tx u{text-decoration:none;color:var(--neto);font-weight:600}
+.tr{display:grid;grid-template-columns:minmax(110px,170px) 1fr 90px;gap:10px;align-items:center;margin:5px 0;font-size:.9rem}
+.tr .b{height:20px;background:var(--ln);border-radius:4px;overflow:hidden}.tr .b i{display:block;height:100%;background:var(--irpf)}
+.tr span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.in{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.in input{font-size:1.4rem;width:min(260px,100%)}
+.chip{cursor:pointer;border:1px solid var(--ln);background:var(--card);color:var(--tx);border-radius:99px;padding:4px 12px;font:inherit;font-size:.85rem}
+svg{width:100%;height:auto;display:block}svg text{fill:var(--mu);font-size:11px}
+footer{margin-top:28px;font-size:.84rem;color:var(--mu)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="w">
+<div class="top">
+ <div><h1>De tu sueldo bruto a tu sueldo neto</h1>
+ <p class="mu">Calculadora gratuita para España (ejercicio 2026): Seguridad Social del trabajador e IRPF, con las normas y tramos oficiales.<br><b>Información actualizada a 10 de noviembre de 2026.</b></p></div>
+ <label class="sm mu">Comunidad autónoma<br><select id="ccaa"><option value="val">Comunitat Valenciana (2026)</option><option value="and">Andalucía</option><option value="ara">Aragón</option><option value="ast">Principado de Asturias</option><option value="bal">Illes Balears</option><option value="can">Canarias</option><option value="cnt">Cantabria</option><option value="clm">Castilla-La Mancha</option><option value="cyl">Castilla y León</option><option value="cat">Cataluña</option><option value="ext">Extremadura</option><option value="gal">Galicia</option><option value="mad">Comunidad de Madrid</option><option value="mur">Región de Murcia</option><option value="rio">La Rioja</option></select><span id="nota-ccaa" class="sm mu" style="display:block;max-width:280px"></span></label>
+</div>
+<nav role="tablist" aria-label="Secciones">
+ <button role="tab" id="t-info" aria-selected="true" data-p="info">Información general</button>
+ <button role="tab" id="t-ejemplos" aria-selected="false" data-p="ejemplos">Ejemplos de trabajadores</button>
+ <button role="tab" id="t-simulador" aria-selected="false" data-p="simulador">Simulador</button>
+</nav>
+
+<section id="info" role="tabpanel">
+ <div class="card src"><h2>Fuentes oficiales</h2>
+ <ul>
+ <li><a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c15-calculo-impuesto-determinacion-cuotas-integras.html" target="_blank" rel="noopener">AEAT · Capítulo 15: cálculo del impuesto y cuotas íntegras</a> (índice con todos los regímenes)</li>
+ <li><a href="https://www.hacienda.gob.es/SGFAL/FinanciacionTerritorial/Autonomica/Capitulo-IV-Tributacion-Autonomica-2025.pdf" target="_blank" rel="noopener">Hacienda · Tributación autonómica 2025</a> (escalas y mínimos de cada comunidad)</li>
+ <li><a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-general/gravamen-estatal.html" target="_blank" rel="noopener">AEAT · Gravamen estatal de la base liquidable general</a> (escala estatal, art. 63 LIRPF)</li>
+ <li><a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-general/gravamen-autonomico.html" target="_blank" rel="noopener">AEAT · Gravamen autonómico de la base liquidable general</a> (art. 74 LIRPF)</li>
+ <li><a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c14-adecuacion-impuesto-circunstancias-personales/minimo-autonomico-personal-familiar.html" target="_blank" rel="noopener">AEAT · Mínimo personal y familiar autonómico</a></li>
+ <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764" target="_blank" rel="noopener">BOE · Ley 35/2006 del IRPF</a> (arts. 19, 20, 57, 63, 74)</li>
+ <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-1998-8202" target="_blank" rel="noopener">BOE · Ley 13/1997 de la Generalitat Valenciana</a> (tramo autonómico) y <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2026-19331" target="_blank" rel="noopener">Ley 5/2026</a> (escala valenciana 2026)</li>
+ <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724" target="_blank" rel="noopener">BOE · Ley General de la Seguridad Social</a> (RDLeg. 8/2015; art. 19 bis, cuota de solidaridad)</li>
+ <li>BOE 31-03-2026 · Orden PJC/297/2026 de cotización 2026 (base máxima, tipos). Consulta también <a href="https://www.seg-social.es" target="_blank" rel="noopener">seg-social.es</a></li>
+ </ul></div>
+
+ <div class="card"><h2>Para qué sirven tus impuestos y cotizaciones</h2>
+ <h3>Seguridad Social</h3>
+ <p>Es el sistema público de protección. Lo que cotizas (tú y tu empresa) financia, entre otras cosas, las <b>pensiones de jubilación</b> actuales, la <b>sanidad de la baja médica</b> y las prestaciones por incapacidad temporal o permanente, el <b>paro</b> (desempleo), los permisos por nacimiento y cuidado de menores, y las pensiones de viudedad y orfandad. Funciona por reparto: las cotizaciones de quienes trabajan hoy pagan las prestaciones de hoy, y te dan derecho a las tuyas en el futuro. El MEI (Mecanismo de Equidad Intergeneracional) es un recargo para reforzar la caja de las pensiones; el MEI y la cuota de solidaridad por encima de la base máxima no generan derechos adicionales de pensión.</p>
+ <h3>IRPF</h3>
+ <p>Es el impuesto sobre la renta de las personas físicas: tributa lo que ganas, y de forma <b>progresiva</b> (quien gana más paga un porcentaje mayor). Es un tributo compartido: la parte estatal financia servicios del Estado (defensa, justicia, infraestructuras estatales, pensiones no contributivas, etc.) y la parte autonómica financia las competencias de tu comunidad, sobre todo <b>sanidad, educación y servicios sociales</b>. Cada mes la empresa te retiene a cuenta y en la declaración de la Renta se ajusta la cuota real.</p>
+ <p class="sm mu">Diferencia clave: la Seguridad Social es una cotización ligada a prestaciones; el IRPF es un impuesto general sin prestación individual asociada.</p></div>
+
+ <div class="card"><h2>Qué supone esta calculadora</h2>
+ <ul>
+ <li><b>Régimen:</b> trabajador por cuenta ajena del Régimen General, <b>residente fiscal en territorio común</b>, que tributa la base liquidable general (nómina). Es el supuesto del capítulo 15 del Manual práctico de Renta de la AEAT, en su parte de gravamen estatal + autonómico.</li>
+ <li><b>Comunidad:</b> aplica la escala autonómica de la comunidad elegida. Están las 15 comunidades de régimen común: la Comunitat Valenciana con su escala de 2026 y las demás con la escala de 2025 que publica la AEAT (en el Manual de Renta 2025 aún no hay escalas de 2026, y algunas comunidades las han rebajado después). Con el mínimo personal autonómico propio de cada una.</li>
+ <li><b>Persona:</b> soltera, sin hijos, ascendientes ni discapacidad, menor de 65 años, con mínimo personal y gastos deducibles de 2.000 €.</li>
+ <li><b>No cubre:</b> País Vasco y Navarra (régimen foral, otras escalas) ni la escala especial de Ceuta y Melilla; la base del ahorro (intereses, dividendos, plusvalías); no residentes; régimen especial de trabajadores desplazados a España; autónomos (RETA); Canarias, Ceuta y Melilla con sus especialidades; deducciones autonómicas y familiares; pagas extra prorrateadas o retenciones mensuales exactas.</li>
+ </ul>
+ <p class="sm mu">La AEAT lo organiza así: introducción, gravamen de la base general, gravamen del ahorro, ejemplo práctico, residentes en el extranjero, trabajadores desplazados y especialidades. Consúltalo en el <a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c15-calculo-impuesto-determinacion-cuotas-integras.html" target="_blank" rel="noopener">capítulo 15 del Manual práctico de Renta 2025</a>.</p></div>
+
+ <div class="card"><h2>Cómo se calcula</h2>
+ <h3>1. Seguridad Social (lo que paga el trabajador)</h3>
+ <p>Se aplica sobre el bruto anual hasta la <b>base máxima de 61.214,40 €/año</b> (5.101,20 €/mes en 2026). Tipos del trabajador en contrato indefinido: contingencias comunes 4,70 % + desempleo 1,55 % + formación profesional 0,10 % + MEI 0,15 % = <b>6,50 %</b> (1,60 % de desempleo en contratos temporales).</p>
+ <p><b>Cuota de solidaridad:</b> la parte del sueldo que supera la base máxima cotiza extra. Parte del trabajador en 2026: 0,19 % sobre el exceso hasta un 10 % por encima de la base máxima, 0,21 % entre el 10 % y el 50 %, y 0,24 % por encima del 50 %.</p>
+ <h3>2. IRPF (rendimientos del trabajo)</h3>
+ <p>Base = bruto − Seguridad Social − 2.000 € de gastos deducibles − reducción por rendimientos del trabajo (hasta 7.302 € si el rendimiento neto es ≤ 14.852 €; decrece y desaparece en 19.747,50 €). Sobre esa base se aplican <b>dos escalas</b>, la estatal y la autonómica, y a cada cuota se le resta la escala aplicada al mínimo personal (5.550 € estatal; 6.105 € autonómico en la C. Valenciana).</p>
+ <div class="sc"><table id="tabla-escalas"></table></div>
+ <p class="sm mu">Es una herramienta informativa, no asesoramiento fiscal; contrasta siempre con la AEAT. No se muestra el coste para la empresa (cotiza aparte ~31 %). No se modela la deducción específica para rentas en torno al SMI (hasta 590,89 €).</p>
+ </div>
+</section>
+
+<section id="ejemplos" role="tabpanel" hidden>
+ <div class="card"><h2>Tipo efectivo según el sueldo</h2>
+ <p class="mu sm">Porcentaje del bruto que se llevan la Seguridad Social y el IRPF (escala logarítmica, de 12.000 € a 1.500.000 €). Los puntos son los ejemplos de abajo.</p>
+ <div id="curva"></div>
+ <div class="lg"><span style="--c:var(--irpf)">IRPF</span><span style="--c:var(--ss)">Seguridad Social</span><span style="--c:var(--tx)">Total</span></div></div>
+ <div class="card"><h2>Ocho trabajadores, de 15.000 € a 1.000.000 €</h2>
+ <p class="mu sm">Perfiles ilustrativos. Cada barra reparte el 100 % del bruto anual.</p>
+ <div class="lg"><span style="--c:var(--neto)">Neto para ti</span><span style="--c:var(--ss)">Seguridad Social</span><span style="--c:var(--irpf)">IRPF</span></div>
+ <div id="ejs"></div></div>
+ <div class="card"><h2>Tabla comparativa</h2><div class="sc"><table id="tabla-ej"></table></div></div>
+</section>
+
+<section id="simulador" role="tabpanel" hidden>
+ <div class="card"><h2>Introduce tu sueldo bruto anual</h2>
+ <div class="in"><input id="bruto" type="number" inputmode="decimal" min="0" step="500" value="35000" aria-label="Sueldo bruto anual en euros"><span class="mu">€ brutos al año</span>
+ <label class="sm"><input type="checkbox" id="temp" style="vertical-align:middle"> Contrato temporal</label></div>
+ <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap" id="chips"></div></div>
+ <div id="res"></div>
+</section>
+
+<footer>Datos del ejercicio 2026 (Seguridad Social: Orden PJC/297/2026; IRPF: Ley 35/2006 y Ley 5/2026 de la Generalitat). Información actualizada a 10 de noviembre de 2026. Todo se calcula en tu navegador; no se envía ningún dato. Fuentes:
+<a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-general/gravamen-estatal.html" target="_blank" rel="noopener">AEAT</a> ·
+<a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764" target="_blank" rel="noopener">BOE</a></footer>
+</div>
+
+<script>
+const SS_MAX=61214.4,GASTOS=2000,MIN_E=5550;
+const EST=[[0,.095],[12450,.12],[20200,.15],[35200,.185],[60000,.225],[300000,.245]];
+const VAL=[[0,.088],[12000,.117],[22000,.146],[32000,.17],[42000,.194],[52000,.219],[62000,.244],[72000,.261],[100000,.2735],[150000,.2835],[200000,.2935]];
+const $=s=>document.querySelector(s);
+const eur=n=>{const r=Math.round((n+Number.EPSILON)*100)/100,d=Math.abs(r-Math.trunc(r))>1e-9?2:0;return new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',useGrouping:'always',minimumFractionDigits:d,maximumFractionDigits:d}).format(r)};
+const pc=(n,d=2)=>new Intl.NumberFormat('es-ES',{style:'percent',minimumFractionDigits:d,maximumFractionDigits:d}).format(n);
+const scale=(s,x)=>s.reduce((t,[a,r],i)=>{const b=i+1<s.length?s[i+1][0]:Infinity;return x>a?t+(Math.min(x,b)-a)*r:t},0);
+const rateAt=(s,x)=>{let r=s[0][1];for(const[a,q]of s)if(x>=a)r=q;return r};
+const N25='Escala 2025 de la AEAT (Manual de Renta 2025, actualizado el 17-03-2026). Aún no hay 2026 publicado en esa fuente.';
+const CC={val:{s:VAL,m:6105,n:'Escala 2026 (Ley 5/2026 de la Generalitat Valenciana).'},
+and:{s:[[0,.095],[13000,.12],[21100,.15],[35200,.185],[60000,.225]],m:5790,n:N25},
+ara:{s:[[0,.095],[13072.5,.12],[21210,.15],[36960,.185],[52500,.205],[60000,.23],[80000,.24],[90000,.25],[130000,.255]],m:5550,n:N25},
+ast:{s:[[0,.09],[12450,.12],[17707.2,.14],[33007.2,.192],[53407.2,.215],[70000,.225],[90000,.25],[175000,.26]],m:6105,n:N25},
+bal:{s:[[0,.09],[10000,.1125],[18000,.1425],[30000,.175],[48000,.19],[70000,.2175],[90000,.2275],[120000,.2375],[175000,.2475]],m:6105,n:N25},
+can:{s:[[0,.09],[13748,.115],[19422,.14],[35924,.185],[57566,.235],[93268,.25],[123745,.26]],m:5606,n:N25},
+cnt:{s:[[0,.085],[13000,.11],[21000,.145],[35200,.18],[60000,.225],[90000,.245]],m:5550,n:N25},
+clm:{s:[[0,.095],[12450,.12],[20200,.15],[35200,.185],[60000,.225]],m:5550,n:N25},
+cyl:{s:[[0,.09],[12450,.12],[20200,.14],[35200,.185],[53407.2,.215]],m:5550,n:N25},
+cat:{s:[[0,.095],[12500,.125],[22000,.16],[33000,.19],[53000,.215],[90000,.235],[120000,.245],[175000,.255]],m:5550,n:N25},
+ext:{s:[[0,.08],[12450,.10],[20200,.16],[24200,.175],[35200,.21],[60000,.235],[80200,.24],[99200,.245],[120200,.25]],m:5550,n:N25},
+gal:{s:[[0,.09],[12985.35,.1165],[21068.6,.149],[35200,.184],[60000,.225]],m:5789,n:N25},
+mad:{s:[[0,.085],[13362.22,.107],[19004.63,.128],[35425.68,.174],[57320.4,.205]],m:5956.65,n:N25},
+mur:{s:[[0,.095],[12450,.112],[20200,.133],[34000,.179],[60000,.225]],m:5550,n:N25},
+rio:{s:[[0,.08],[12450,.106],[20200,.136],[35200,.178],[40000,.183],[50000,.19],[60000,.245],[120000,.27]],m:5550,n:N25}};
+const aut=()=>CC[$('#ccaa').value];
+function red20(r){return r<=14852?7302:r<=17673.52?7302-1.75*(r-14852):r<19747.5?2364.34-1.14*(r-17673.52):0}
+function calc(G,temp){
+ const A=aut(),base=Math.min(G,SS_MAX),des=temp?.016:.0155;
+ const cc=base*(.047+des+.001+.0015),ex=Math.max(0,G-SS_MAX),t1=SS_MAX*.1,t2=SS_MAX*.5;
+ const sol=Math.min(ex,t1)*.0019+Math.max(0,Math.min(ex,t2)-t1)*.0021+Math.max(0,ex-t2)*.0024;
+ const ss=cc+sol,rnt=Math.max(0,G-ss-GASTOS),red=Math.min(rnt,red20(rnt)),bl=Math.max(0,rnt-red);
+ const ie=scale(EST,bl),ia=scale(A.s,bl),ce=Math.max(0,ie-scale(EST,MIN_E)),ca=Math.max(0,ia-scale(A.s,A.m));
+ const irpf=ce+ca;
+ return{G,ss,cc,sol,rnt,red,bl,ie,ia,ce,ca,irpf,neto:G-ss-irpf,minc:ie+ia-irpf}
+}
+function tramos(bl){const A=aut(),c=[...new Set([...EST,...A.s].map(x=>x[0]))].sort((a,b)=>a-b),o=[];
+ c.forEach((a,i)=>{const b=c[i+1]??Infinity,m=Math.max(0,Math.min(bl,b)-a);if(m>0){const r=rateAt(EST,a)+rateAt(A.s,a);o.push({a,b,m,r,t:m*r})}});return o}
+const rng=(a,b)=>b===Infinity?'más de '+eur(a):eur(a)+' – '+eur(b);
+function stack(c){const p=x=>(100*x/c.G).toFixed(2)+'%';return `<div class="bar" role="img" aria-label="Neto ${pc(c.neto/c.G)}, Seguridad Social ${pc(c.ss/c.G)}, IRPF ${pc(c.irpf/c.G)}"><i class="bn" style="width:${p(c.neto)}"></i><i class="bs" style="width:${p(c.ss)}"></i><i class="bi" style="width:${p(c.irpf)}"></i></div>`}
+const PERF=[['Mozo de almacén',15000],['Administrativa',25000],['Enfermero',35000],['Ingeniera',50000],['Directora de área',80000],['Directivo senior',150000],['Consejero',300000],['Alto ejecutivo',1000000]];
+
+function escalas(){const A=aut();$('#nota-ccaa').textContent=A.n;const c=[...new Set([...EST,...A.s].map(x=>x[0]))].sort((a,b)=>a-b);
+ $('#tabla-escalas').innerHTML='<tr><th>Base liquidable</th><th>Estatal</th><th>Autonómico</th><th>Total</th></tr>'+c.map((a,i)=>{const e=rateAt(EST,a),u=rateAt(A.s,a);return `<tr><td>${rng(a,c[i+1]??Infinity)}</td><td>${pc(e,2)}</td><td>${pc(u,2)}</td><td><b>${pc(e+u,2)}</b></td></tr>`}).join('')}
+
+function ejemplos(){
+ const T=temp=>PERF.map(([n,g])=>[n,calc(g,false)]);const R=T();
+ $('#ejs').innerHTML=R.map(([n,c])=>`<div class="ex"><div class="h"><b>${n} · ${eur(c.G)} brutos</b><span class="mu sm">Retenido: ${eur(c.ss+c.irpf)} (${pc((c.ss+c.irpf)/c.G)})</span></div>${stack(c)}<div class="sm mu" style="margin-top:4px">Neto ${eur(c.neto)} · Seg. Social ${eur(c.ss)} · IRPF ${eur(c.irpf)}</div></div>`).join('');
+ $('#tabla-ej').innerHTML='<tr><th>Perfil</th><th>Bruto</th><th>Seg. Social</th><th>IRPF</th><th>Neto</th><th>% retenido</th></tr>'+R.map(([n,c])=>`<tr><td>${n}</td><td>${eur(c.G)}</td><td>${eur(c.ss)}</td><td>${eur(c.irpf)}</td><td>${eur(c.neto)}</td><td>${pc((c.ss+c.irpf)/c.G)}</td></tr>`).join('');
+ const W=640,H=300,L=40,B=30,x0=Math.log(12000),x1=Math.log(1500000),X=g=>L+(Math.log(g)-x0)/(x1-x0)*(W-L-10),Y=v=>H-B-v*(H-B-10)/.6;
+ const pts=f=>{let s='';for(let i=0;i<=90;i++){const g=Math.exp(x0+(x1-x0)*i/90),c=calc(g,false);s+=`${X(g).toFixed(1)},${Y(f(c)).toFixed(1)} `}return s};
+ let sv=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Tipo efectivo de IRPF, Seguridad Social y total según el bruto anual">`;
+ for(let v=0;v<=.6;v+=.1)sv+=`<line x1="${L}" x2="${W-10}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--ln)"/><text x="${L-6}" y="${Y(v)+4}" text-anchor="end">${Math.round(v*100)}%</text>`;
+ [15000,30000,60000,100000,300000,1000000].forEach(g=>sv+=`<text x="${X(g)}" y="${H-10}" text-anchor="middle">${g>=1e6?'1 M€':g/1000+'k'}</text>`);
+ sv+=`<polyline fill="none" stroke="var(--ss)" stroke-width="2.5" points="${pts(c=>c.ss/c.G)}"/><polyline fill="none" stroke="var(--irpf)" stroke-width="2.5" points="${pts(c=>c.irpf/c.G)}"/><polyline fill="none" stroke="var(--tx)" stroke-width="2.5" points="${pts(c=>(c.ss+c.irpf)/c.G)}"/>`;
+ R.forEach(([n,c])=>sv+=`<circle cx="${X(c.G)}" cy="${Y((c.ss+c.irpf)/c.G)}" r="4.5" fill="var(--tx)"><title>${n}: ${pc((c.ss+c.irpf)/c.G)}</title></circle>`);
+ $('#curva').innerHTML=sv+'</svg>'}
+
+function simular(){
+ const G=Math.max(0,parseFloat($('#bruto').value)||0),c=calc(G,$('#temp').checked);
+ if(!G){$('#res').innerHTML='<div class="card"><p>Escribe un sueldo bruto anual mayor que 0 para ver el resultado.</p></div>';return}
+ const tr=tramos(c.bl),mx=Math.max(...tr.map(t=>t.t),1),tot=c.ss+c.irpf;
+ $('#res').innerHTML=`
+ <div class="grid">
+  <div class="k n"><span class="mu sm">Sueldo neto anual</span><b>${eur(c.neto)}</b><span class="sm mu">${eur(c.neto/12)}/mes en 12 pagas · ${eur(c.neto/14)}/mes en 14</span></div>
+  <div class="k s"><span class="mu sm">Seguridad Social</span><b>${eur(c.ss)}</b><span class="sm mu">${pc(c.ss/G)} del bruto</span></div>
+  <div class="k i"><span class="mu sm">IRPF</span><b>${eur(c.irpf)}</b><span class="sm mu">${pc(c.irpf/G)} del bruto</span></div>
+  <div class="k"><span class="mu sm">Total que se lleva el Estado</span><b>${eur(tot)}</b><span class="sm mu">${pc(tot/G)} de tu bruto</span></div>
+ </div>
+ <div class="card" style="margin-top:16px"><h2>Reparto de tu sueldo bruto</h2>${stack(c)}
+  <div class="lg"><span style="--c:var(--neto)">Neto ${pc(c.neto/G)}</span><span style="--c:var(--ss)">Seg. Social ${pc(c.ss/G)}</span><span style="--c:var(--irpf)">IRPF ${pc(c.irpf/G)}</span></div></div>
+ <div class="card"><h2>Seguridad Social, al detalle</h2><div class="sc"><table>
+  <tr><td>Cotización ordinaria (6,50 % ${$('#temp').checked?'+0,05 % temporal ':''}sobre ${eur(Math.min(G,SS_MAX))})</td><td>${eur(c.cc)}</td></tr>
+  <tr><td>Cuota de solidaridad (sobre ${eur(Math.max(0,G-SS_MAX))} por encima de la base máxima)</td><td>${eur(c.sol)}</td></tr>
+  <tr><th>Total Seguridad Social</th><td><b>${eur(c.ss)}</b></td></tr></table></div></div>
+ <div class="card"><h2>IRPF, tramo a tramo</h2>
+  <p class="sm mu">Rendimiento neto del trabajo: ${eur(c.rnt)} (bruto − Seg. Social − ${eur(GASTOS)} de gastos). Reducción por rendimientos del trabajo: ${eur(c.red)}. <b>Base liquidable: ${eur(c.bl)}</b>.</p>
+  ${tr.map(t=>{const hi=Math.min(t.b,c.bl),es=rateAt(EST,t.a),au=t.r-es,q=t.m*t.r,w=Math.max(8,100*t.m/Math.max(...tr.map(x=>x.m)));
+   return `<div class="tm"><div class="tt"><b>${t.b===Infinity?'A partir de '+eur(t.a):'De '+eur(t.a)+' a '+eur(hi)}</b><span class="mu">${eur(t.m)} de tu base · tipo ${pc(t.r,2)}</span></div>
+   <div class="w2" style="width:${w.toFixed(1)}%"><div class="bar" role="img" aria-label="De ${eur(t.m)}, te quitan ${eur(q)} y te quedas ${eur(t.m-q)}"><i class="bi" style="width:${(t.r*100).toFixed(2)}%"></i><i class="bn" style="width:${(100-t.r*100).toFixed(2)}%"></i></div></div>
+   <div class="tx">De esos ${eur(t.m)}, te quitan el ${pc(t.r,2)} = <b>${eur(q)}</b> (${eur(t.m*es)} estatal + ${eur(t.m*au)} autonómico) y te quedas con <u>${eur(t.m-q)}</u>.</div></div>`}).join('')}
+  <div class="lg"><span style="--c:var(--irpf)">Lo que se lleva el IRPF</span><span style="--c:var(--neto)">Lo que conservas de ese tramo</span></div>
+  <p class="sm mu">Cada barra tiene el ancho proporcional al tamaño del tramo, y su parte naranja es el porcentaje que se queda el IRPF. Los tramos se aplican sobre la base liquidable, no sobre el bruto.</p>
+  <div class="tm"><div class="tt"><b>Mínimo personal y familiar</b><span class="mu">importe que no tributa</span></div><div class="tx">Se resta de la cuota: <u>−${eur(c.minc)}</u> (la escala aplicada a tu mínimo personal, estatal y autonómico).</div></div>
+  <table style="margin-top:8px"><tr><td>Cuota estatal</td><td>${eur(c.ce)}</td></tr><tr><td>Cuota autonómica</td><td>${eur(c.ca)}</td></tr><tr><th>Total IRPF</th><td><b>${eur(c.irpf)}</b></td></tr></table>
+  <p class="sm mu" style="margin-top:8px">Tipo marginal (lo que paga tu último euro): ${pc(tr.length?tr[tr.length-1].r:0,2)}. Tipo medio sobre el bruto: ${pc(c.irpf/G)}.</p></div>`
+}
+const chips=[18000,25000,35000,50000,80000,120000,300000,1000000];
+$('#chips').innerHTML=chips.map(v=>`<button class="chip" data-v="${v}">${eur(v)}</button>`).join('');
+$('#chips').onclick=e=>{if(e.target.dataset.v){$('#bruto').value=e.target.dataset.v;simular()}};
+$('#bruto').oninput=simular;$('#temp').onchange=simular;
+$('#ccaa').onchange=()=>{escalas();ejemplos();simular()};
+function tab(p){if(!['info','ejemplos','simulador'].includes(p))p='info';
+ document.querySelectorAll('section').forEach(s=>s.hidden=s.id!==p);
+ document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.p===p));
+ if(location.hash!=='#'+p)history.replaceState(null,'','#'+p)}
+document.querySelector('nav').onclick=e=>{if(e.target.dataset.p)tab(e.target.dataset.p)};
+addEventListener('hashchange',()=>tab(location.hash.slice(1)));
+escalas();ejemplos();simular();tab(location.hash.slice(1));
+</script>
+</body>
+</html>
